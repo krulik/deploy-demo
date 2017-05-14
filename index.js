@@ -12,11 +12,10 @@ mongo.connect(url, function (err, _db) {
   console.log('Connected successfully to mongo');
   console.log(_db);
   db = _db;
-//   collection = db.collection('messages');
-//   collection.find({}).toArray(function (err, docs) {
-//     console.log(docs);
-//     messages = docs;
-//   });
+  collection = db.collection('items');
+  collection.find({data: 42}).toArray(function (err, docs) {
+    console.log(docs);
+  });
 });
 
 function handleRequest (request, response) {
