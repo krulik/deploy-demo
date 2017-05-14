@@ -5,7 +5,7 @@ var server = http.createServer();
 server.listen(process.env.PORT);
 server.on('request', handleRequest);
 
-var url = 'mongodb://heroku_f9src7jj:@ds133981.mlab.com:33981/heroku_f9src7jj';
+var url = 'mongodb://krulik:foobar@ds133981.mlab.com:33981/heroku_f9src7jj';
 
 mongo.connect(url, function (err, _db) {
   console.log('Connected successfully to mongo');
