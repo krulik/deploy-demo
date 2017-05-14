@@ -6,11 +6,12 @@ server.listen(process.env.PORT);
 server.on('request', handleRequest);
 
 var url = 'mongodb://krulik:foobar@ds133981.mlab.com:33981/heroku_f9src7jj';
+var db;
 
 mongo.connect(url, function (err, _db) {
   console.log('Connected successfully to mongo');
   console.log(_db);
-//   db = _db;
+  db = _db;
 //   collection = db.collection('messages');
 //   collection.find({}).toArray(function (err, docs) {
 //     console.log(docs);
@@ -19,7 +20,7 @@ mongo.connect(url, function (err, _db) {
 });
 
 function handleRequest (request, response) {
-  response.end(`Handling request URL: ${request.url}`);
+  response.end(`Handling request URL: ${request.url}, dbName: ${db.databaseName()}`);
 }
 
 console.log(`listening on ${process.env.PORT}`); 
