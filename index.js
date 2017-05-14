@@ -20,7 +20,7 @@ mongo.connect(url, function (err, _db) {
 });
 
 function handleRequest (request, response) {
-  response.end(`Handling request URL: ${request.url}, dbName: ${db.databaseName()}`);
+  response.end(`Handling request URL: ${request.url}, dbName: ${db.databaseName}`);
 }
 
 console.log(`listening on ${process.env.PORT}`); 
