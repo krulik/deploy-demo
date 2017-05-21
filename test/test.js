@@ -1,8 +1,21 @@
 var assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(4));
+var fs = require('fs');
+var server = require('../index.js');
+
+describe('Server', function() {
+  describe('handleRequest', function() {
+    it('should return index.html for /', function() {
+      var indexHtml = fs.readFileSync(__dirname + '/../index.html', 'utf-8');
+      var request = {
+        url: '/'
+      };
+      var response = {
+        end: data => {
+          assert.strictEqual(data, indexHtml);
+        }
+      };
+      
+      server.handleRequest(request, response);
     });
   });
 });

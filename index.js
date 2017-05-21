@@ -30,3 +30,7 @@ function handleRequest (request, response) {
 }
 
 console.log(`listening on ${process.env.PORT}`); 
+
+module.exports = {
+  handleRequest
+};
