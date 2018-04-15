@@ -1,23 +1,29 @@
+'use strict';
+
 let http = require('http');
 let fs = require('fs');
 let mongo = require('mongodb').MongoClient;
 
+let url = process.env.MONGO_URL || '';
+let db;
 let server = http.createServer();
 server.listen(process.env.PORT);
 server.on('request', handleRequest);
+if (url) {
+  connectToMongo(url);
+}
 
-let url = process.env.MONGO_URL;
-let db;
-
-mongo.connect(url, (err, _db) => {
-  console.log('Connected successfully to mongo');
-  console.log(_db);
-  db = _db;
-  collection = db.collection('items');
-  collection.find({data: 42}).toArray(function (err, docs) {
-    console.log(docs);
+function connectToMongo(url) {
+  mongo.connect(url, (err, _db) => {
+    console.log('Connected successfully to mongo');
+    console.log(_db);
+    db = _db;
+    collection = db.collection('items');
+    collection.find({data: 42}).toArray(function (err, docs) {
+      console.log(docs);
+    });
   });
-});
+}
 
 function handleRequest (request, response) {
   if (request.url === '/' || request.url === '/index.html') {
