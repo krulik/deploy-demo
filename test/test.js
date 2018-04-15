@@ -11,10 +11,10 @@ describe('Server', function() {
       };
       var response = {
         end: data => {
-          assert.strictEqual(data, indexHtml);
+          assert.strictEqual(data, null);
         }
       };
-      
+
       server.handleRequest(request, response);
     });
   });
