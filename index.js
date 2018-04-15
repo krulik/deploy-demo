@@ -31,7 +31,7 @@ function handleRequest (request, response) {
       response.end(data);
     });
   } else {
-    response.end(`Hello URL: ${request.url}, dbName: ${db.databaseName}`);
+    response.end(`Hi URL: ${request.url}, dbName: ${db.databaseName}`);
   }
 }
 
