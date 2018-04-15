@@ -1,13 +1,13 @@
-var http = require('http');
-var fs = require('fs');
-var mongo = require('mongodb').MongoClient;
+let http = require('http');
+let fs = require('fs');
+let mongo = require('mongodb').MongoClient;
 
-var server = http.createServer();
+let server = http.createServer();
 server.listen(process.env.PORT);
 server.on('request', handleRequest);
 
-var url = 'mongodb://krulik:foobar@ds133981.mlab.com:33981/heroku_f9src7jj';
-var db;
+let url = process.env.MONGO_URL;
+let db;
 
 mongo.connect(url, (err, _db) => {
   console.log('Connected successfully to mongo');
@@ -29,7 +29,7 @@ function handleRequest (request, response) {
   }
 }
 
-console.log(`listening on ${process.env.PORT}`); 
+console.log(`listening on ${process.env.PORT}`);
 
 module.exports = {
   handleRequest
