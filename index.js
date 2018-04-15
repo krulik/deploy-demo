@@ -5,7 +5,7 @@ let fs = require('fs');
 let mongo = require('mongodb').MongoClient;
 
 let url = process.env.MONGO_URL || '';
-let db;
+let db, collection;
 let server = http.createServer();
 server.listen(process.env.PORT);
 server.on('request', handleRequest);
