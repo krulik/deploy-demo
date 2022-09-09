@@ -4,7 +4,7 @@ let http = require('http');
 let fs = require('fs');
 let mongo = require('mongodb').MongoClient;
 
-let url = process.env.MONGO_URL || 'mongodb+srv://heroku-demo:jKcmGj5mJlClgVE4@cluster0.okzaw.gcp.mongodb.net/demo?retryWrites=true&w=majority';
+let url = process.env.MONGO_URL || '';
 let db, collection;
 let server = http.createServer();
 server.listen(process.env.PORT || '5000');
