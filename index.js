@@ -15,9 +15,12 @@ if (url) {
 
 function connectToMongo(url) {
   mongo.connect(url, (err, _db) => {
-    console.log('Connected successfully to mongo');
-    console.log(_db);
+    if (err) {
+      console.log(`got error=[${err}]`);
+      return;
+    }
     db = _db;
+    console.log('Connected successfully to mongo', db);
     collection = db.collection('items');
     collection.find({data: 42}).toArray(function (err, docs) {
       console.log(docs);
