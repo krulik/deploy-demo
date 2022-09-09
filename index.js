@@ -4,10 +4,10 @@ let http = require('http');
 let fs = require('fs');
 let mongo = require('mongodb').MongoClient;
 
-let url = process.env.MONGO_URL || '';
+let url = process.env.MONGO_URL || 'mongodb+srv://heroku-demo:jKcmGj5mJlClgVE4@cluster0.okzaw.gcp.mongodb.net/demo?retryWrites=true&w=majority';
 let db, collection;
 let server = http.createServer();
-server.listen(process.env.PORT);
+server.listen(process.env.PORT || '5000');
 server.on('request', handleRequest);
 if (url) {
   connectToMongo(url);
@@ -23,7 +23,11 @@ function connectToMongo(url) {
     console.log('Connected successfully to mongo', db);
     collection = db.collection('items');
     collection.find({data: 42}).toArray(function (err, docs) {
-      console.log(docs);
+      if (err) {
+        console.log(`got query error=[${err}]`);
+        return;
+      }
+      console.log('got docs', docs);
     });
   });
 }
