@@ -9,7 +9,7 @@ app.use(cors());
 
 let mongo = require('mongodb').MongoClient;
 
-let url = process.env.MONGO_URL || 'mongodb://heroku-demo:jKcmGj5mJlClgVE4@cluster0-shard-00-00.okzaw.gcp.mongodb.net:27017,cluster0-shard-00-01.okzaw.gcp.mongodb.net:27017,cluster0-shard-00-02.okzaw.gcp.mongodb.net:27017/demo?ssl=true&replicaSet=atlas-vmfgkh-shard-0&authSource=admin&retryWrites=true&w=majorityvmongodb://heroku-demo:jKcmGj5mJlClgVE4@cluster0-shard-00-00.okzaw.gcp.mongodb.net:27017,cluster0-shard-00-01.okzaw.gcp.mongodb.net:27017,cluster0-shard-00-02.okzaw.gcp.mongodb.net:27017/demo?ssl=true&replicaSet=atlas-vmfgkh-shard-0&authSource=admin&retryWrites=true&w=majorityv';
+let url = process.env.MONGO_URL || '';
 let db, collection;
 
 if (url) {
