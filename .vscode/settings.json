@@ -1,6 +1,0 @@
-{
-  "files.exclude": {
-    ".vscode": "explorerExcludedFiles",
-    "node_modules": "explorerExcludedFiles"
-  }
-}
